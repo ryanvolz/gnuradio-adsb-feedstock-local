@@ -14,6 +14,7 @@ Development: https://github.com/mhostetter/gr-adsb
 Documentation: https://github.com/mhostetter/gr-adsb
 
 A GNU Radio out-of-tree (OOT) module to demodulate and decode Automatic Dependent Surveillance Broadcast (ADS-B) messages.
+To use the built-in web app, run `python -m gr_adsb.webserver`.
 
 
 Current build status

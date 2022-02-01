@@ -1,15 +1,21 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '11'
 channel_sources:
 - conda-forge
 channel_targets:
 - ryanvolz main
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '11'
 gnuradio_core:
 - 3.8.*
-numpy:
-- '1.19'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -17,9 +23,7 @@ pin_run_as_build:
 python:
 - 3.9.* *_cpython
 target_platform:
-- win-64
-volk:
-- '2.5'
+- osx-64
 zip_keys:
-- - python
-  - numpy
+- - c_compiler_version
+  - cxx_compiler_version
