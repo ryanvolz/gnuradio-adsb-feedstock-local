@@ -51,11 +51,12 @@ requirements:
     - swig
     - volk
     # Add/remove library dependencies here
+    - colorama
 
   run:
     - numpy
     - python
-    # Add/remove runtime dependencies here (below needed for gr-paint)
+    # Add/remove runtime dependencies here
     - colorama
     - flask
     - flask-socketio
