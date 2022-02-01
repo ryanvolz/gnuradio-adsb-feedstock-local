@@ -2,10 +2,10 @@
 
 # Jinja variables help maintain the recipe by keeping repeated info in one place.
 # Fill in the github information or set the package name and URL manually!
-{% set github_user_or_org = "drmpeg" %}
-{% set github_repo = "gr-paint" %}
+{% set github_user_or_org = "mhostetter" %}
+{% set github_repo = "gr-adsb" %}
 # A version number is REQUIRED for sanity. Tag and release if necessary!
-{% set version = "0.0.1a" %}
+{% set version = "0.0.1.2022.01.20a" %}
 # OOT module packages conventionally start with "gnuradio-" before the OOT name.
 {% set oot_name = github_repo|replace("gr-", "") %}
 {% set name = "gnuradio-" + oot_name %}
@@ -23,12 +23,12 @@ source:
   ##  and otherwise fall back to versioned archive:
   # url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/v{{ version }}.tar.gz
   ##  or an archive based on a commit hash:
-  url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/9967e997b585060492c6837d180353254c1a1c47.tar.gz
+  url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/5d0361d208072574e1a3a200fca07c0b334f16d0.tar.gz
   ##  sha256 is the preferred checksum -- you can get it for a file with:
   ##   `openssl sha256 <file name>`.
   ##  You may need the openssl package, available on conda-forge:
   ##   `conda install openssl -c conda-forge``
-  sha256: a11efd09d2d0cf8b6edbea1736a1f728505163559bc6224959240dfac033ba99
+  sha256: 2e10eb0ab8759113ae8b05104a594674b67b894dd442d9d1799df3b9d284e913
 
 build:
   number: 0
@@ -56,7 +56,12 @@ requirements:
     - numpy
     - python
     # Add/remove runtime dependencies here (below needed for gr-paint)
-    - pillow
+    - colorama
+    - flask
+    - flask-socketio
+    - gevent
+    - gevent-websocket
+    - pyzmq
 
 test:
   commands:
@@ -97,12 +102,11 @@ about:
   # (even if the license doesn't require it) using the license_file entry.
   # See https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#license-file
   license_file: COPYING
-  summary: Template package of a GNU Radio module.
+  summary: GNU Radio module to demodulate and decode ADS-B messages
   # The remaining entries in this section are optional, but recommended.
   description: >
-    Template package of a GNU Radio module. This example builds a package
-    for gr-paint. You can modify the files in the 'recipe' directory and
-    'conda-forge.yml' to build any OOT module!
+    A GNU Radio out-of-tree (OOT) module to demodulate and decode Automatic
+    Dependent Surveillance Broadcast (ADS-B) messages.
   doc_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
   dev_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
 
@@ -110,5 +114,4 @@ extra:
   recipe-maintainers:
     # GitHub IDs for maintainers of the recipe.
     # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
-    - LisaSimpson
-    - LandoCalrissian
+    - ryanvolz
