@@ -17,4 +17,6 @@ cmake ${CMAKE_ARGS} -G "Ninja" .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
 cmake --build . --config Release --target install
 
+cmake -E copy_directory ../web $SP_DIR/gr_adsb
+
 ctest --build-config Release --output-on-failure --timeout 120 -j${CPU_COUNT}
