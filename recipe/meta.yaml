@@ -32,6 +32,8 @@ source:
 
 build:
   number: 0
+  ignore_run_exports_from:
+    - gnuradio-core
 
 requirements:
   build:
@@ -58,6 +60,8 @@ requirements:
     - flask-socketio
     - gevent
     - gevent-websocket
+    - gnuradio-core {{ gnuradio_core }}
+    - python
     - pyzmq
 
 test:
@@ -105,6 +109,8 @@ about:
   description: >
     A GNU Radio out-of-tree (OOT) module to demodulate and decode Automatic
     Dependent Surveillance Broadcast (ADS-B) messages.
+
+    To use the built-in web app, run `python -m gr_adsb.webserver`.
   doc_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
   dev_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
 
