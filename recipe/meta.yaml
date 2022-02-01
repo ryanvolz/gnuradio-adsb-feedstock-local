@@ -32,6 +32,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [win]
   ignore_run_exports_from:
     - gnuradio-core
 
